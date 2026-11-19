@@ -131,3 +131,7 @@ No sound is played. The package performs no network requests and does not write 
 Current releases use the **Fluri Themes Commercial License**, not MIT. Private non-production evaluation is permitted. Production use and client delivery require the applicable Fluri licence. [Current offers and terms](https://fluri.xyz/legal/license/) · [Package licensing notes](./LICENSING.md).
 
 `LICENSE-MIT-LEGACY` records historical licensing boundaries; it does not offer an MIT option for this package. All runtime artwork is original, with no third-party runtime dependencies.
+
+## On smaller screens
+
+![Mobile preview](https://fluri.xyz/previews/koi-mobile.png)
