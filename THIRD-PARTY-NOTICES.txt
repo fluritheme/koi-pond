@@ -1,0 +1,1 @@
+Koi Pond has no third-party runtime dependencies. All procedural fish, water, plants and animation artwork are original Fluri code. Development tooling retains its respective licences.

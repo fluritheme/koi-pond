@@ -1,0 +1,80 @@
+{
+  "name": "@fluritheme/koi-pond",
+  "version": "0.1.0",
+  "description": "A living, hand-painted koi pond for websites. Articulated fish, real feeding behaviour, ripples, water lilies and moonlit water.",
+  "type": "module",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://fluri.xyz/",
+  "author": {
+    "name": "Franti\u0161ek Gejdo\u0161",
+    "url": "https://fluri.xyz/founder/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluritheme/koi-pond.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fluritheme/koi-pond/issues"
+  },
+  "keywords": [
+    "koi",
+    "pond",
+    "aquarium",
+    "interactive",
+    "website-theme",
+    "canvas",
+    "fish",
+    "relaxing",
+    "water",
+    "typescript",
+    "fluri"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "assets",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "LICENSE-MIT-LEGACY",
+    "LICENSING.md",
+    "licensing.json",
+    "THIRD-PARTY-NOTICES.txt",
+    "SECURITY.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5331",
+    "build": "tsc -p tsconfig.build.json && node scripts/bundle.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "release:check": "node scripts/release-check.mjs",
+    "check": "pnpm typecheck && pnpm test && pnpm build && pnpm test:browser && pnpm format:check && pnpm release:check && pnpm test:package",
+    "prepublishOnly": "node scripts/check-licensing.mjs && pnpm build && pnpm release:check",
+    "test:package": "node scripts/pack-check.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "@playwright/test": "1.64.1",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "vite": "8.3.6",
+    "vitest": "5.1.0",
+    "esbuild": "0.28.2"
+  }
+}

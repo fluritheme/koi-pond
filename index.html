@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#123f3d" />
+    <meta
+      name="description"
+      content="An original living koi pond for your website. Feed the fish. Find a little stillness."
+    />
+    <title>Koi Pond — Fluri</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #f4f1e7;
+        color: #183f3b;
+        font-family: "DM Sans", Arial, sans-serif;
+      }
+      ::selection {
+        background: #e6a189;
+        color: #163c39;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        font: inherit;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #e18d68;
+        outline-offset: 5px;
+      }
+      header {
+        height: 94px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1440px;
+        margin: auto;
+        padding: 0 6vw;
+        border-bottom: 1px solid #183f3b28;
+      }
+      .logo {
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: inherit;
+        text-decoration: none;
+      }
+      .logo i {
+        color: #cf694d;
+        font-style: normal;
+      }
+      header span {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .toplink {
+        font-size: 12px;
+        color: inherit;
+        text-decoration: none;
+      }
+      .intro {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 64px 6vw 38px;
+        gap: 40px;
+        max-width: 1440px;
+        margin: auto;
+      }
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 2px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 22px;
+        color: #61756b;
+      }
+      h1 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: clamp(64px, 8vw, 112px);
+        line-height: 0.94;
+        font-weight: 400;
+        letter-spacing: -4px;
+        margin: 0;
+      }
+      h1 em {
+        font-weight: 400;
+        color: #cf694d;
+      }
+      .intro p {
+        font-size: 15px;
+        line-height: 1.8;
+        max-width: 292px;
+        margin-bottom: 5px;
+        color: #66736a;
+      }
+      .water-layout {
+        position: relative;
+        margin: 0 3vw;
+      }
+      .pond {
+        height: 560px;
+        max-height: 65vh;
+        min-height: 400px;
+        background: #1c5550;
+        border-radius: 90px 6px 90px 6px;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        box-shadow: 0 16px 40px #183f3b13;
+      }
+      .pond::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid #f7f2df3b;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 105;
+      }
+      .pond-label {
+        position: absolute;
+        left: 36px;
+        bottom: 32px;
+        color: #cde1c7;
+        z-index: 101;
+        pointer-events: none;
+        font-size: 10px;
+        letter-spacing: 2px;
+        line-height: 1.8;
+        text-transform: uppercase;
+      }
+      .pond-label b {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 1px;
+        color: #edf1da;
+        font-weight: 500;
+      }
+      .pond-note {
+        position: absolute;
+        right: 36px;
+        top: 28px;
+        color: #cde1c7;
+        font-size: 10px;
+        letter-spacing: 1px;
+        z-index: 101;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .live {
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background: #d7e6c5;
+        box-shadow: 0 0 8px #ecf3d9;
+      }
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 28px 3vw 35px;
+        max-width: 1440px;
+        margin: auto;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .actions button {
+        background: transparent;
+        border: 1px solid #183f3b30;
+        border-radius: 30px;
+        padding: 12px 20px;
+        color: #234a40;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .actions .feed {
+        background: #cf694d;
+        border-color: #cf694d;
+        color: #fff8e9;
+      }
+      .actions button:hover {
+        background: #e1e5d6;
+      }
+      .actions .feed:hover {
+        background: #b95640;
+      }
+      .count {
+        color: #61756b;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .count b {
+        color: #234a40;
+        font-weight: 600;
+      }
+      .bottom {
+        display: flex;
+        align-items: flex-start;
+        gap: 40px;
+        padding: 44px 6vw 70px;
+        border-top: 1px solid #183f3b20;
+        max-width: 1440px;
+        margin: auto;
+      }
+      .bottom h2 {
+        font-family: "DM Serif Display", Georgia, serif;
+        font-size: 35px;
+        font-weight: 400;
+        letter-spacing: -0.7px;
+        line-height: 1.15;
+        max-width: 400px;
+        margin: 0 auto 0 0;
+      }
+      .bottom p {
+        font-size: 13px;
+        line-height: 1.9;
+        color: #66736a;
+        max-width: 300px;
+        margin: 0;
+      }
+      .install {
+        margin-top: 15px;
+        display: block;
+        color: #234a40;
+        font-family: monospace;
+        font-size: 11px;
+        text-decoration: none;
+      }
+      .pill {
+        border: 1px solid #183f3b20;
+        border-radius: 40px;
+        padding: 9px 14px;
+        white-space: nowrap;
+        font-size: 10px;
+        color: #61756b;
+      }
+      footer {
+        height: 80px;
+        background: #153f3c;
+        color: #e4e8d2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 6vw;
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+      footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+      @media (min-width: 1500px) {
+        .water-layout {
+          max-width: 1440px;
+          margin: auto;
+        }
+      }
+      @media (max-width: 700px) {
+        header {
+          height: 72px;
+          padding: 0 24px;
+        }
+        header span {
+          display: none;
+        }
+        .intro {
+          padding: 40px 24px 28px;
+          display: block;
+        }
+        .intro h1 {
+          font-size: 72px;
+          letter-spacing: -3px;
+        }
+        .intro p {
+          margin: 24px 0 0;
+          max-width: 330px;
+          font-size: 13px;
+        }
+        .eyebrow {
+          font-size: 9px;
+          margin-bottom: 18px;
+        }
+        .water-layout {
+          margin: 0 12px;
+        }
+        .pond {
+          height: 470px;
+          max-height: none;
+          min-height: 0;
+          border-radius: 60px 6px 60px 6px;
+        }
+        .pond-label {
+          left: 22px;
+          bottom: 20px;
+          font-size: 8px;
+        }
+        .pond-label b {
+          font-size: 10px;
+        }
+        .pond-note {
+          right: 22px;
+          top: 24px;
+          font-size: 8px;
+        }
+        .toolbar {
+          padding: 20px 24px 28px;
+          display: block;
+        }
+        .actions {
+          gap: 7px;
+        }
+        .actions button {
+          padding: 11px 14px;
+          font-size: 11px;
+        }
+        .count {
+          margin-top: 16px;
+        }
+        .bottom {
+          padding: 32px 24px 48px;
+          display: block;
+        }
+        .bottom h2 {
+          font-size: 29px;
+          max-width: 280px;
+          margin-bottom: 22px;
+        }
+        .bottom p {
+          font-size: 12px;
+        }
+        .pill {
+          display: inline-block;
+          margin-top: 24px;
+        }
+        footer {
+          height: 76px;
+          padding: 0 24px;
+          letter-spacing: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="https://fluri.xyz/">fluri<i>.</i></a
+      ><span>Little worlds for the web</span
+      ><a class="toplink" href="https://fluri.xyz/themes/">The collection ↗</a>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <span class="eyebrow">No. 011 / Living water</span>
+          <h1>A little<br /><em>stillness.</em></h1>
+        </div>
+        <p>
+          Eight little lives. A world beneath the surface.<br />Your website,
+          with a quieter heartbeat.
+        </p>
+      </section>
+      <div class="water-layout">
+        <div
+          class="pond"
+          id="pond"
+          aria-label="Living koi pond. Tap the water to feed fish."
+        >
+          <div class="pond-note">
+            <i class="live"></i
+            ><span id="lighting">AFTERNOON / JADE WATER</span>
+          </div>
+          <div class="pond-label">
+            <b>Tap the water. They’ll find you.</b>Move slowly. Stay a little
+            longer.
+          </div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="actions">
+          <button class="feed" id="feed">A little food ↗</button
+          ><button id="gather">Come together</button
+          ><button id="scatter">Make a splash</button
+          ><button id="night" aria-pressed="false">Moonlit water</button
+          ><button id="pause" aria-pressed="false">Pause</button>
+        </div>
+        <div class="count">
+          <b id="fed">0</b> little bites · <span id="fish">8</span> koi
+        </div>
+      </div>
+      <section class="bottom">
+        <h2>Not a background.<br />A little place to be.</h2>
+        <div>
+          <p>
+            Hand-painted in code. Every tail turn, every ripple, every race for
+            the last crumb. No videos. No downloads. Just a little living water.
+          </p>
+          <a class="install" href="https://fluri.xyz/"
+            >npm i @fluritheme/koi-pond ↗</a
+          >
+        </div>
+        <span class="pill">Made to be a small detail.</span>
+      </section>
+    </main>
+    <footer>
+      <span>YOUR WEBSITE. A LITTLE MORE ALIVE.</span
+      ><a href="https://fluri.xyz/">MEET FLURI ↗</a>
+    </footer>
+    <script type="module" src="/demo.ts"></script>
+  </body>
+</html>
